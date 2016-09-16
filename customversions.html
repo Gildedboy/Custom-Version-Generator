@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>Custom Version Generator for Luma3DS</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+        
+<body>
+    <div id="content" class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1>Custom Version Generator for Luma3DS <small>by Gilded</small></h1>
+        </div>
+      </div>
+	<div class="row">
+        <div class="col-xs-12 form-horizontal">
+          <div class="form-group">
+            <div class="col-xs-12">
+              <div class="input-group">
+                <span class="input-group-addon">sdmc:/luma/</span>
+                <input id="textbox" maxlength="19" placeholder="Ver. 11.1.0-34U" type="text" class="form-control" />
+                <span class="input-group-btn">
+                	<a download="customversions.txt" id="downloadlink" class="btn btn-default">Download</a>
+                </span>
+              </div>
+            </div>
+          </div>
+		</div>
+		<script type="text/javascript"></script>
+		<div class="col-xs-12">
+          	<p>Characters Left:
+          		<script type="text/javascript">
+          			var lenght = $("#textbox").maxLength;
+          			document.write(lenght);
+          		</script></p>
+        </div>
+	</div>	
+	<div class="row">
+        <div class="col-xs-12">
+          	<p>Create your own customized customversion.txt for Luma3DS!</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+          <h2>Notes</h2>
+          <ul>
+            <li>Make sure you have the latest Luma3DS Release and the option flagged.</li>
+            <li>The string can be 19 characters max.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>Resources</h2>
+          <ul>
+            <li>#3dshacks on Rizon</li>
+            <li><a href="https://www.reddit.com/r/3dshacks">/r/3dshacks</a></li>
+            <li><a href="http://github.com/AuroraWright/Luma3DS">Luma3DS</a></li>
+            <li><a href="http://astronautlevel2.github.io/Luma3DS/">Binaries</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+        
+<script>
+
+(function () {
+var textFile = null,
+  makeTextFile = function (text) {
+    var data = new Blob([text], {type: 'text/plain'});
+
+    // If we are replacing a previously generated file we need to
+    // manually revoke the object URL to avoid memory leaks.
+    if (textFile !== null) {
+      window.URL.revokeObjectURL(textFile);
+    }
+
+    textFile = window.URL.createObjectURL(data);
+
+    return textFile;
+  };
+
+
+  var create = document.getElementById('downloadlink'),
+    textbox = document.getElementById('textbox');
+
+  create.addEventListener('click', function () {
+    var link = document.getElementById('downloadlink');
+    link.href = makeTextFile(textbox.value);
+    link.style.display = 'block';
+  }, false);
+})();
+</script>
+</body>
+</html>
