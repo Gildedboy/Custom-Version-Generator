@@ -32,16 +32,16 @@
 		</div>
 		<script type="text/javascript"></script>
         <div class="col-xs-12">
-            <p><em id="length">Characters Left:
+            <p><em id="length">Characters Left: 19</em>
               <script type="text/javascript">
-                $('textbox').on('keypress',function(){
-                  if($('#textbox').length>0)
-                    $('#length').html(" "+(19-$('#textbox').length));
+                $('#textbox').on('keyup',function(){
+                  if($('#textbox').val().length>=0)
+                    $('#length').html("Characters Left: "+(19-$('#textbox').val().length));
                   else
                     $('#length').html('Cuadro de texto completo');
                 });
 
-              </script></em></p>
+              </script></p>
         </div>
         <div class="col-xs-12">
             <div class="checkbox">
