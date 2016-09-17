@@ -30,22 +30,35 @@
             </div>
           </div>
 		</div>
-		<script type="text/javascript"></script>
         <div class="col-xs-12">
             <p><em id="length">Characters Left: 19</em>
               <script type="text/javascript">
+              var left=19;
                 $('#textbox').on('keyup',function(){
                   if($('#textbox').val().length>=0)
-                    $('#length').html("Characters Left: "+(19-$('#textbox').val().length));
+                    $('#length').html("Characters Left: "+(left-$('#textbox').val().length));
                   else
-                    $('#length').html('Cuadro de texto completo');
+                    $('#length').html('You surpass the limit');
                 });
 
               </script></p>
         </div>
         <div class="col-xs-12">
             <div class="checkbox">
-              <label><input type="checkbox" value="">Keep the Version/Region</label>
+              <label><input type="checkbox" value="" id="version">Keep the Version/Region</label>
+              <script type="text/javascript">
+                $('#version').click(function() {
+                  if(document.getElementById('version').checked) {
+                    left=4;
+                    $("#textbox").attr('maxlength','4');
+                    $('#length').html("Characters Left: "+(left-$('#textbox').val().length));
+                  } else {
+                    left=19;
+                    $("#textbox").attr('maxlength','19');
+                    $('#length').html("Characters Left: "+(left-$('#textbox').val().length));
+                  }
+                });
+              </script>
             </div>
         </div>
 	</div>	
