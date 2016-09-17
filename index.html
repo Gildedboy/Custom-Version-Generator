@@ -45,6 +45,8 @@
             <div class="checkbox">
               <label><input type="checkbox" value="" id="version">Keep the Version/Region</label>
               <script type="text/javascript">
+                string = textbox.value;
+                stringorg = string;
                 $('#version').click(function() {
                   string = textbox.value;
                   stringmod = string.substring(0, 4);        
@@ -54,7 +56,6 @@
                     $("#textbox").attr('maxlength','4');
                     $('#length').html("Characters Left: "+(left-$('#textbox').val().length));
                   } else {
-                    textbox.value=string;
                     left=19;
                     $("#textbox").attr('maxlength','19');
                     $('#length').html("Characters Left: "+(left-$('#textbox').val().length));
