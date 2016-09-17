@@ -31,25 +31,35 @@
           </div>
 		</div>
 		<script type="text/javascript"></script>
-		<div class="col-xs-12">
-          	<p>Characters Left:
-          		<script type="text/javascript">
-          			var lenght = $("#textbox").maxLength;
-          			document.write(lenght);
-          		</script></p>
+        <div class="col-xs-12">
+            <p><em id="length">Characters Left:
+              <script type="text/javascript">
+                $('textbox').on('keypress',function(){
+                  if($('#textbox').length>0)
+                    $('#length').html(" "+(19-$('#textbox').length));
+                  else
+                    $('#length').html('Cuadro de texto completo');
+                });
+
+              </script></em></p>
+        </div>
+        <div class="col-xs-12">
+            <div class="checkbox">
+              <label><input type="checkbox" value="">Keep the Version/Region</label>
+            </div>
         </div>
 	</div>	
 	<div class="row">
         <div class="col-xs-12">
-          	<p>Create your own customized customversion.txt for Luma3DS!</p>
+          	<h3>Create your own customized customversion.txt for Luma3DS!</h3>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
           <h2>Notes</h2>
           <ul>
-            <li>Make sure you have the latest Luma3DS Release and the option flagged.</li>
             <li>The string can be 19 characters max.</li>
+            <li>Make sure you have the latest Luma3DS Release and the option flagged.</li>
             <li>If the option "Keep the Version/Region" it's checked the string will be reduced to 4 characters (this is for the sake of making a clean string).</li>
             <li>You can uncheck it and apply it by yourself if you want to customize it. The stock Version/Region string from Nintendo is <code>Ver. %d.%d.%d-%d%ls</code>.</li>
           </ul>
